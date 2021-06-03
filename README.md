@@ -140,10 +140,20 @@ _Note: This will be different if you installed DVWA into a different directory._
 - - -
 
 ## Docker Container
-- [dockerhub page](https://hub.docker.com/r/vulnerables/web-dvwa/)
-`docker run --rm -it -p 80:80 vulnerables/web-dvwa`
+- [dockerhub page](https://hub.docker.com/r/soheileizadi/dvwa/)
+```bash
+docker run --rm -it -p 80:80 soheileizadi/dvwa
 
-Please ensure you are using aufs due to previous MySQL issues. Run `docker info` to check your storage driver. If it isn't aufs, please change it as such. There are guides for each operating system on how to do that, but they're quite different so we won't cover that here.
+```
+
+The [Dockerfile](deploy/Dockerfile) in the project is available if you would like to customize the container.
+
+Setting up ReCAPTCHA with docker, You'll need to generate your keys at: 
+[https://www.google.com/recaptcha/admin](https://www.google.com/recaptcha/admin).
+You can run the container using the public and private keys you get:
+```bash
+docker run --rm -it -p 80:80 -e RECAPTCHA_PUBLIC_KEY=PUBLIC_KEY -e RECAPTCHA_PRIVATE_KEY=PRIVATE_KEY soheileizadi/dvwa
+```
 
 - - -
 
